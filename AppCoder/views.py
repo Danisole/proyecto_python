@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from .forms import SuscriptorForm
 from django.http import HttpResponse
 
 # Create your views here.
@@ -17,7 +18,30 @@ def  crear_paquete(request):
     return HttpResponse(respuesta)
 
 def suscriptor(request):
-    return render(request, "AppCoder/suscriptor.html")
+
+    if request.method =="POST":
+
+        form = SuscriptorForm(request.POST)
+
+        if form.is_valid():
+        
+            suscriptor = Suscriptor()
+
+            suscriptor.nombre = form.cleaned_data['nombre']
+            suscriptor.apellido = form.cleaned_data['apellido']
+            suscriptor.email = form.cleaned_data['email']
+            suscriptor.save()
+
+            form = SuscriptorForm()
+
+    else:
+        form = SuscriptorForm()
+    
+    suscriptor= Suscriptor.objects.all()
+    context = {"suscriptor": suscriptor}
+
+    return render(request, "AppCoder/suscriptor.html", context)
+
 
 def itinerario(request):
     return render(request, "AppCoder/itinerario.html")
