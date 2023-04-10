@@ -9,18 +9,18 @@ def  crear_paquete(request):
     nombre_paquete="paquete aventurero"
     cantidad_personas=3
 
-    bubbleTea=BubbleTea(nombre=nombre_paquete,  personas=cantidad_personas)
-    bubbleTea.save()
+    viaje=Viaje(nombre=nombre_paquete,  personas=cantidad_personas)
+    viaje.save()
 
-    respuesta=f"Su itinerario  --{nombre_paquete} para {cantidad_personas} personas fue creado satisfactoriamente"
+    respuesta=f"Su paquete  --{nombre_paquete} para {cantidad_personas} personas fue creado satisfactoriamente"
 
     return HttpResponse(respuesta)
 
 def suscriptor(request):
     return render(request, "AppCoder/suscriptor.html")
 
-def itinerarios(request):
-    return render(request, "AppCoder/itinerarios.html")
+def itinerario(request):
+    return render(request, "AppCoder/itinerario.html")
 
 def inicio(request):
     return HttpResponse("mi pagina de inicio")
