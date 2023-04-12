@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import *
-from .forms import SuscriptorForm
+from .forms import *
 from django.http import HttpResponse
 
 # Create your views here.
@@ -38,9 +38,17 @@ def suscriptor(request):
         form = SuscriptorForm()
     
     suscriptor= Suscriptor.objects.all()
-    context = {"suscriptor": suscriptor}
+    context = {"suscriptor": suscriptor, "form" : form}
 
     return render(request, "AppCoder/suscriptor.html", context)
+
+def eliminarSuscriptor(request, id):
+    suscriptor = Suscriptor.objects.get(id=id)
+    print(suscriptor)
+    suscriptor.delete()
+    suscriptor= Suscriptor.objects.all()
+    form = SuscriptorForm()
+    return render(request, "AppCoder/suscriptor.html", {"suscriptor": suscriptor, "mensaje": "Tu suscripcion fue eliminada con exito", "form" : form})
 
 
 def itinerario(request):

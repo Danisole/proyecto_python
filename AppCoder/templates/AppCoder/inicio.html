@@ -26,8 +26,37 @@
 
 {% endblock %}
 
+{% block formulario %} 
+
+<h4 class="text-center h3_contacto">Contactame!</h4>
+<div class="container">
+    <form class="form">
+        <div class="mb-3 col-6">
+            <label for="Nombre" class="form-label">Indica tu nombre</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="nombre">
+            <div id="nombre" class="form-text">mensaje nombre</div>
+            </div>
+        <div class="mb-3 col-6">
+            <label for="exampleInputEmail1" class="form-label">Indica tu Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">indica tu eMail</div>
+        </div>
+        <div class="mb-3 col-6">
+            <label for="asunto" class="form-label">Asunto</label>
+            <input type="text" class="form-control" id="asunto" aria-describedby="asunto">
+            <div id="asunto" class="form-text">Mensaje para asunto</div>
+        </div>
+        <div class="mb-3 col-6">
+            <label for="mensaje">Mensaje</label>
+            <textarea class="form-control" name="mensaje" id="" cols="30" rows="5"></textarea>
+        </div>
+        <div class="text-center d-grid col-2 mx-auto"><button type="submit" class="btn" style="background-color: #023e8a; color: aliceblue;">Enviar</button></div>
+        
+    </form>
+</div>
 
 
+{% endblock %}
 
 
 
