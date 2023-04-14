@@ -26,3 +26,12 @@ class Itinerario(models.Model):
 
     def __str__(self):
         return f"{self.nombre} {self.lugar} {self.empresa}"
+    
+class Comentarios(models.Model):
+
+    nombre=models.CharField(max_length=50)
+    reseña=models.CharField(max_length=140)
+    estrellas=models.IntegerField()
+
+    def __str__(self):
+        return f"{self.nombre} {self.reseña} {self.estrellas}"

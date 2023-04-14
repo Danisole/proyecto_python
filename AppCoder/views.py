@@ -52,7 +52,35 @@ def eliminarSuscriptor(request, id):
 
 
 def itinerario(request):
+
     return render(request, "AppCoder/itinerario.html")
+
+def comentarios(request):
+
+    if request.method =="POST":
+
+        form = ComentariosForm(request.POST)
+
+        if form.is_valid():
+        
+            comentarios = Comentarios()
+
+            comentarios.nombre = form.cleaned_data['nombre']
+            comentarios.reseña = form.cleaned_data['reseña']
+            comentarios.estrellas = form.cleaned_data['estrellas']
+            comentarios.save()
+
+            form = ComentariosForm()
+
+    else:
+        form = ComentariosForm()
+    
+    comentarios= Comentarios.objects.all()
+    context = {"comentarios": comentarios, "form" : form}
+
+    return render(request, "AppCoder/comentarios.html", context)
+
+
 
 def inicio(request):
     return HttpResponse("mi pagina de inicio")

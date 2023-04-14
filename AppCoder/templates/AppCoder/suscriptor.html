@@ -48,7 +48,9 @@
 <br>
 
 <div class="container">
-    <h3>{{ mensaje }}</h3>
+    
+    <h5>{{ mensaje }}</h5>
+
     <table class="table table-bordered" style="border-color: #023e8a">
         <thead>
             <tr>
@@ -61,7 +63,7 @@
         </thead>
 
         <tbody>
-            {% for suscrip in suscriptor %}
+        {% for suscrip in suscriptor %}
             <tr>
                 <td>
                     {{ suscrip.id }}                

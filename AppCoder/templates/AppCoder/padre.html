@@ -14,17 +14,17 @@
     <header>
         <nav class="navbar navbar-expand-lg" style="box-shadow: 2px 13px 5px 0px rgba(0,0,0,0.28); padding: 0 100px; margin: 15px 0">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="../../static/AppCoder/assets/miLogo2.png" alt="Logo" class="logo_nav"></a>
+                <a class="navbar-brand" href="{% url 'inicioApp' %}"><img src="../../static/AppCoder/assets/miLogo2.png" alt="Logo" class="logo_nav"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw-semibold grid gap-4">
                         <li class="nav-item">
-                            <a class="nav-link active"  aria-current="page" href="{% url 'inicioApp' %}">Inicio</a>
+                            <a class="nav-link" href="{% url 'inicioApp' %}">Mi historia</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'inicioApp' %}">Mi historia</a>
+                            <a class="nav-link" href="{% url 'comentarios' %}">Reseñas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'itinerario' %}">Itinerarios</a>
@@ -132,12 +132,14 @@
 
     <section class="contacto">
 
-        {% block tituloForm %} 
-        {% endblock %}
+    {% block tituloForm %} 
 
-        {% block formulario %} 
-        {% endblock %}
-       
+    {% endblock %}
+
+    {% block formulario %} 
+
+    {% endblock %}
+
     </section>
 
     <footer class="text-center footer">
