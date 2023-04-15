@@ -51,9 +51,22 @@ def eliminarSuscriptor(request, id):
     return render(request, "AppCoder/suscriptor.html", {"suscriptor": suscriptor, "mensaje": "Tu suscripcion fue eliminada con exito", "form" : form})
 
 
-def itinerario(request):
+def busquedaItinerario(request):
+    return render(request, "AppCoder/busquedaItinerario.html")
 
-    return render(request, "AppCoder/itinerario.html")
+
+def buscar(request):
+    region=request.GET["region"]
+    print(region)
+
+    if region!="":
+
+        itinerarios=Itinerarios.objects.filter(region__icontains=region)
+        return render(request, "AppCoder/buscar.html", {"itinerarios": itinerarios})
+    
+    else:
+        return render(request, "AppCoder/buscar.html", {"mensaje":"campo vacio"})
+
 
 def comentarios(request):
 

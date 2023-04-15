@@ -5,4 +5,5 @@ from .models import *
 
 admin.site.register(Viaje)
 admin.site.register(Suscriptor)
-admin.site.register(Itinerario)
+admin.site.register(Itinerarios)
+admin.site.register(Comentarios)

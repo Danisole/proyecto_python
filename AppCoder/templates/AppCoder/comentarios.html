@@ -48,39 +48,38 @@
             ">
             
         </form>
+
         <br>
+
         <div class="container">
             <table class="table table-light">
                 <thead>
                     <tr>
-                        <th>
-                            Nombre
-                        </th>
-                        <th>
-                            Comentario
-                        </th>
-                        <th>
-                            Estrellas
-                        </th>
+                        <th>Nombre</th>
+                        <th>Comentario</th>                      
+                        <th>Estrellas</th>                     
                     </tr>
                 </thead>
+
                 <tbody>
-                    {% for comentario in comentarios %}
+                {% for comentario in comentarios %}
                     <tr>
                         <td>
                             {{ comentario.nombre }}
                         </td>
                         <td>
-                            {{ comentario.reseña}}
+                            {{ comentario.reseña }}
                         </td>
                         <td>
                             {{ comentario.estrellas }}
                         </td>
                     </tr>
+                {% endfor %}
                 </tbody>
             </table>
         </div>
-        {% endfor %}
+
+        
 
 {% endblock %}
 
