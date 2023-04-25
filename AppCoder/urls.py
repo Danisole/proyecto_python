@@ -12,4 +12,7 @@ urlpatterns = [
 
     path("suscriptor/", suscriptor, name="suscriptor"),
     path("eliminarSuscriptor/<id>", eliminarSuscriptor, name="eliminarSuscriptor"),
+    
+    path('login/', login_request, name="login"),
+
 ]

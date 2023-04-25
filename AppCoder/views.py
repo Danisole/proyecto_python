@@ -3,7 +3,11 @@ from .models import *
 from .forms import *
 from django.http import HttpResponse
 
+from django.urls import reverse_lazy
 # Create your views here.
+
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import login, authenticate, logout
 
 def  crear_paquete(request):
 
@@ -100,3 +104,38 @@ def inicio(request):
 
 def inicioApp(request):
     return render(request, "AppCoder/inicio.html")
+
+#login logout register
+
+def login_request(request):
+    if request.method=="POST":
+        form= AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            info=form.cleaned_data
+            usu=info["username"]
+            clave=info["password"]
+            usuario=authenticate(username=usu, password=clave)
+            if usuario is not None:
+                login(request, usuario)
+                return render(request, "AppCoder/inicio.html", {"mensaje": f"usuario {usu} logueado correctamentre"})
+            else:
+                return render(request, "AppCoder/login.html", {"form": form, "mensaje": "Usuario o contraseña incorrectos"})
+        else:
+            return render(request, "AppCoder/login.html", {"form": form, "mensaje": "Usuario o contraseña incorrectos"})    
+    else:
+        form=AuthenticationForm()
+        return render(request, "AppCoder/login.html", {"form": form})
+        
+def register(request):
+    if request.method=="POST":
+        form=UserCreationForm(request.POST)
+        if form.is_valid():
+            username=form.cleaned_data.get("username")
+            form.save()
+            return render(request, "AppCoder/inicio.html", {"mensaje": f"Usuario {username} creado correctamente"})
+        else:
+            return render(request, "AppCoder/register.html", {"form": form, "mensaje":"Error al crear el usuario"})
+        
+    else:
+        form=UserCreationForm()
+        return render(request, "AppCoder/register.html", {"form": form})    
